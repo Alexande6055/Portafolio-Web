@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     images: ["https://portafolio-web-sable-eight.vercel.app/image.png"],
     creator: "@alexanderdev",
   },
+  other: {
+    "google-site-verification": "9-w3_icWE-GlHNnMVcVIlGumxtOKtviUqpySxPk6sOQ"
+  }
 }
 
 export default function RootLayout({
