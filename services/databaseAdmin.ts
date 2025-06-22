@@ -1,5 +1,6 @@
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db } from "./FirebaseConfig";
+import { Perfil } from "@/models/Perfil";
 
 export async function agregarATecnologia(campo: string, valor: string) {
     try {
@@ -23,5 +24,17 @@ export async function eliminarDeTecnologia(campo: string, valor: string) {
 
     } catch (error) {
         console.error("Error al eliminar tecnología:", error);
+    }
+}
+
+export async function editarPerfil(nuevosDatos: Partial<Perfil>) {
+    try {
+        const ref = doc(db, "perfil", "7ZIJcabtrTFiUvaMKLHD");
+
+        await updateDoc(ref, nuevosDatos);
+
+        console.log("Perfil actualizado correctamente.");
+    } catch (error) {
+        console.error("Error al editar perfil:", error);
     }
 }

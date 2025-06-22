@@ -5,9 +5,9 @@ import { onAuthStateChanged, User } from "firebase/auth"
 import { Button } from "@/components/ui/button"
 import { auth } from "@/services/FirebaseConfig"
 import { Projects } from "@/components/admin/Projects"
-import { SobreMi } from "@/components/admin/SobreMi"
 import { Contact } from "@/components/admin/Contact"
 import AdminStackView from "@/components/admin/AdminStackView"
+import { AdminAbout } from "@/components/admin/AdminAbout"
 
 // Importa las secciones
 
@@ -56,7 +56,7 @@ export default function AdminPage() {
             <div>
                 {section === "proyectos" && <Projects />}
                 {section === "stack" && <AdminStackView />}
-                {section === "sobre-mi" && <SobreMi />}
+                {section === "sobre-mi" && <AdminAbout />}
                 {section === "contacto" && <Contact />}
             </div>
         </div>
