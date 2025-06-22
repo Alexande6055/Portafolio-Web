@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Github, Linkedin, Download } from "lucide-react"
 import { Social, SocialInit } from "@/models/sociaLinks"
 import { GetSocialLinks } from "@/services/database"
+import { format } from "path"
 
 export function Contact() {
   const [socialLinks, setSocialLinks] = useState<Social>(SocialInit);
@@ -19,10 +20,22 @@ export function Contact() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL_CORREO}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: `${process.env.NEXT_PUBLIC_CORREO}`,
+        subject: "Conatacto",
+        text: `Hola me contacto con tigo por :\n ${formData.message} contactame ${formData.email}`
+      })
+    })
+    if (!response.ok) throw new Error("Error al enviar el mensaje");
+    setFormData({ name: "", email: "", message: "" });
+    alert("Mensaje enviado con éxito!");
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
