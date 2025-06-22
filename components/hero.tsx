@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Download, Eye } from "lucide-react"
 
-export function Hero() {
+export function Hero({ cv }: { cv: string }) {
   return (
     <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -17,10 +17,22 @@ export function Hero() {
               <Eye className="mr-2 h-5 w-5" />
               Ver proyectos
             </Button>
-            <Button variant="outline" size="lg" className="bg-gray-900 text-white border-gray-700 hover:bg-gray-800">
-              <Download className="mr-2 h-5 w-5" />
-              Descargar CV
-            </Button>
+            <a
+              href={cv}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex"
+            >
+              <Button
+                variant="outline"
+                size="lg"
+                className="bg-gray-900 text-white border-gray-700 hover:bg-gray-800"
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Descargar CV
+              </Button>
+            </a>
           </div>
         </div>
       </div>

@@ -10,9 +10,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Github, Linkedin, Download } from "lucide-react"
 import { Social, SocialInit } from "@/models/sociaLinks"
 import { GetSocialLinks } from "@/services/database"
-import { format } from "path"
 
-export function Contact() {
+export function Contact({ cv }: { cv: string }) {
   const [socialLinks, setSocialLinks] = useState<Social>(SocialInit);
   const [formData, setFormData] = useState({
     name: "",
@@ -92,10 +91,17 @@ export function Contact() {
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center justify-center mb-6">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                    <Download className="mr-2 h-4 w-4" />
-                    Descargar CV
-                  </Button>
+                  <a
+                    href={cv}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex"
+                  >
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                      <Download className="mr-2 h-4 w-4" />
+                      Descargar CV
+                    </Button>
+                  </a>
                 </div>
 
                 <div className="flex justify-center space-x-4">

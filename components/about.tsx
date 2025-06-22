@@ -1,27 +1,12 @@
 "use client";
-import { Perfil, PerfilInicial } from "@/models/Perfil";
-import { DataPerfil } from "@/services/database"
+import { Perfil } from "@/models/Perfil";
 import Image from "next/image"
-import { useEffect, useState } from "react"
+interface AboutProps {
+  data: Perfil;
+  loading: boolean;
+}
 
-
-export function About() {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<Perfil>(PerfilInicial)
-  useEffect(() => {
-    const obtenerDataPerfil = async () => {
-      try {
-        const datos: Perfil = await DataPerfil();
-        setData(datos);
-      } catch (error) {
-        console.error("Error al obtener datos:", error);
-      } finally {
-        setLoading(false); // <- Termina la carga aquí
-      }
-    };
-
-    obtenerDataPerfil();
-  }, []);
+export function About({ data, loading }: AboutProps) {
 
   if (loading) {
     return (
