@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Alexander Dev",
     images: [
       {
-        url: "http://localhost:3000/image.png",
+        url: "https://portafolio-web-sable-eight.vercel.app/image.png",
         width: 1200,
         height: 630,
         alt: "Alexander Tasinchano - Imagen de Portafolio",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Alexander Tasinchano - Portfolio",
     description: "Estudiante de Ingeniería en Software - Proyectos Fullstack",
-    images: ["http://localhost:3000/image.png"],
+    images: ["https://portafolio-web-sable-eight.vercel.app/image.png"],
     creator: "@alexanderdev",
   },
 }
