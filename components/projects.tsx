@@ -4,19 +4,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
-import { GetProyectos } from "@/services/database";
 import { Proyecto } from "@/models/Proyecto";
+interface ProjectProps {
+  projects: Proyecto[];
+  loading: boolean;
+}
 
-export function Projects() {
-  const [projects, setProjects] = useState<Proyecto[]>([]);
+export function Projects({ projects, loading }: ProjectProps) {
 
-  useEffect(() => {
-    async function fetchProjects() {
-      const data = await GetProyectos();
-      setProjects(data);
-    }
-    fetchProjects();
-  }, []);
 
   return (
     <section id="proyectos" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
@@ -34,6 +29,7 @@ export function Projects() {
                   muted
                   playsInline
                   className="w-full h-full object-cover"
+                  preload="auto"
                 />
               </div>
               <CardHeader>

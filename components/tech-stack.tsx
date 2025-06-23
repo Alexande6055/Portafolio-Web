@@ -1,31 +1,19 @@
 "use client"
 import { Badge } from "@/components/ui/badge"
-import { CategoriaStack, CategoriaStackInit } from "@/models/Tecnologias"
-import { stacks } from "@/services/database"
-import { useEffect, useState } from "react"
+import { CategoriaStack } from "@/models/Tecnologias"
 
-export function TechStack() {
-  const [techStack, setTechStack] = useState<CategoriaStack>(CategoriaStackInit)
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
+interface TechStacProps {
+  techStack: CategoriaStack;
+  loading: boolean;
+}
 
-    const obtenerStacks = async () => {
-      try {
-        const data = await stacks();
-        setTechStack(data);
-      } catch (error) {
-        console.error("Error al obtener datos:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    obtenerStacks();
-  }, []);
+export function TechStack({ techStack, loading }: TechStacProps) {
+
   if (loading) {
     return (
       <section
-        id="sobre-mi"
-        className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
+        id="stack"
+        className="py-16 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-xl text-gray-700 dark:text-gray-300">

@@ -2,33 +2,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { GraduationCap, Award } from "lucide-react"
-import { useEffect, useState } from "react"
 import { certificado } from "@/models/Certificacion"
-import { Certificaciones, stacks } from "@/services/database";
+interface EducationProps {
+  certificados: certificado[];
+  loading: boolean;
+}
+export function Education({ certificados, loading }: EducationProps) {
 
-export function Education() {
-  const [loading, setLoading] = useState(true);
-  const [certificados, setCertificados] = useState<certificado[]>([]);
-  useEffect(() => {
-    try {
-
-      const cargarCertificados = async () => {
-        const data = await Certificaciones();
-        setCertificados(data);
-        stacks();
-      }
-      cargarCertificados();
-    } catch (error) {
-      console.error("Error al obtener datos:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
   if (loading) {
     return (
       <section
-        id="sobre-mi"
-        className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
+        className="py-16 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-xl text-gray-700 dark:text-gray-300">
