@@ -2,7 +2,7 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "./FirebaseConfig";
 import { Perfil, PerfilInicial } from "@/models/Perfil";
 import { certificado } from "@/models/Certificacion";
-import { CategoriaStack } from "@/models/Tecnologias";
+import { CategoriaStack, CategoriaStackInit } from "@/models/Tecnologias";
 import { Social, SocialInit } from "@/models/sociaLinks";
 import { Proyecto } from "@/models/Proyecto";
 
@@ -66,7 +66,8 @@ export async function Certificaciones(): Promise<certificado[]> {
                 return {
                     titulo: data.titulo,
                     area_descripcion: data.area_descripcion,
-                    url: data.url
+                    url: data.url,
+                    institucion: data.institucion
                 };
             });
 
@@ -89,30 +90,22 @@ export async function stacks(): Promise<CategoriaStack> {
         if (!snapshot.empty) {
             const doc = snapshot.docs[0]; // Tomamos el primer documento
             const data = doc.data();
-
+            console.log("svdshjhds" + data)
+            console.log(data.En_Aprendizaje)
             return {
                 Back_End: data.Back_End,
                 Front_End: data.Front_End,
                 Databases: data.Databases,
                 Dev_Tools: data.Dev_Tools,
+                En_Aprendizaje: data.En_Aprendizaje
             };
         } else {
             console.log("No se encontraron categorias.");
-            return {
-                Back_End: [],
-                Front_End: [],
-                Databases: [],
-                Dev_Tools: [],
-            };
+            return CategoriaStackInit;
         }
     } catch (error) {
         console.error("Error al obtener categorias:", error);
-        return {
-            Back_End: [],
-            Front_End: [],
-            Databases: [],
-            Dev_Tools: [],
-        };;
+        return CategoriaStackInit;
     }
 }
 
@@ -137,7 +130,7 @@ export async function GetProyectos(): Promise<Proyecto[]> {
                     tecnologias: data.tecnologias,
                     repos: reposArray,
                     url: data.url || undefined,
-                    url_video:data.url_video
+                    url_video: data.url_video
                 };
             });
             return proyectos;

@@ -16,14 +16,12 @@ export function Hero({ cv }: { cv: string }) {
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
             Alexander Tasinchano
           </h1>
-
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-3">
-            Estudiante de Ingeniería en Software con enfoque en desarrollo backend
+            Backend Developer | NestJS + TypeScript + PostgreSQL
           </p>
 
           <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-xl">
-            Apasionado por construir APIs robustas, funcionales y escalables usando NestJS, TypeScript y PostgreSQL.
-            Siempre en búsqueda de nuevos retos y oportunidades reales.
+            Construyo APIs robustas y escalables con enfoque en buenas prácticas, rendimiento y mantenibilidad. Me encanta resolver problemas reales con código limpio.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -65,7 +63,6 @@ export function Hero({ cv }: { cv: string }) {
             className="w-64 h-64 object-cover rounded-full shadow-lg border-4 border-white dark:border-gray-800 cursor-pointer"
           />
         </motion.div>
-
       </div>
     </section>
   )
