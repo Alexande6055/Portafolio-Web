@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alexander Tasinchano - Portfolio",
     description: "Estudiante de Ingeniería en Software - Proyectos Fullstack",
-    url: "https://tusitio.com",
+    url: "https://portafolio-web-sable-eight.vercel.app",
     siteName: "Alexander Dev",
     images: [
       {
